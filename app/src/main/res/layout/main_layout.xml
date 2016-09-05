@@ -3,26 +3,18 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:paddingTop="50dp"
-        android:textSize="40sp"
-        android:id="@+id/problemView"/>
-
     <GridView xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/answersView"
+        android:id="@+id/startLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:columnWidth="90dp"
-        android:paddingTop="100dp"
+        android:paddingTop="150dp"
         android:paddingLeft="50dp"
-        android:numColumns="auto_fit"
-        android:verticalSpacing="10dp"
-        android:horizontalSpacing="10dp"
+        android:numColumns="2"
+        android:verticalSpacing="50dp"
+        android:horizontalSpacing="5dp"
         android:stretchMode="columnWidth"
         android:gravity="center"
         />
+
 
 </LinearLayout>

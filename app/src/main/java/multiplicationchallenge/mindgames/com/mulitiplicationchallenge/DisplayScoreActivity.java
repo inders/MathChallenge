@@ -5,8 +5,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
+
+import mehdi.sakout.fancybuttons.FancyButton;
 
 /**
  * Created by indersingh on 9/4/16.
@@ -24,7 +25,7 @@ public class DisplayScoreActivity extends Activity {
         int score = intent.getExtras().getInt(Constants.SCORE);
         textView.setText("Your final score is = " + score + "/" + Constants.TOTAL_GAME_PLAY_COUNT);
 
-        Button button = (Button) findViewById(R.id.playAgain);
+        FancyButton button = (FancyButton) findViewById(R.id.playAgain);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

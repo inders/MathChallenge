@@ -2,36 +2,40 @@ package multiplicationchallenge.mindgames.com.mulitiplicationchallenge;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.GridView;
-import android.widget.TextView;
-import android.widget.Toast;
 
+/**
+ * Created by indersingh on 9/4/16.
+ */
 public class MainActivity extends AppCompatActivity {
-
-    private Integer[] numbersArray = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+    private Context context;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        final Context context = this;
+        setContentView(R.layout.main_layout);
+        context = this;
 
-        GridView numbersView = (GridView) findViewById(R.id.numbersView);
-        numbersView.setAdapter(new NumbersAdapter(this));
-        numbersView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        GridView gridView = (GridView) findViewById(R.id.startLayout);
+        gridView.setAdapter(new MainActivityAdapter(this));
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Integer number = (Integer) adapterView.getAdapter().getItem(i);
-                Toast.makeText(MainActivity.this, "Ok! Starting game for " + number.toString(),
-                        Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(context, GameActivity.class);
-                intent.putExtra(Constants.TABLE_NUM, number.toString());
-                startActivity(intent);
+                String optionSelected = (String) adapterView.getAdapter().getItem(i);
+                if (optionSelected.equalsIgnoreCase(Constants.PRACTICE)) {
+                    Intent intent = new Intent(context, GameStartActivity.class);
+                    intent.putExtra(Constants.MODE, Constants.PRACTICE);
+                    startActivity(intent);
+                } else if (optionSelected.equalsIgnoreCase(Constants.CHALLENGE)) {
+                    Intent intent = new Intent(context, GameStartActivity.class);
+                    intent.putExtra(Constants.MODE, Constants.CHALLENGE);
+                    startActivity(intent);
+                }
             }
         });
 

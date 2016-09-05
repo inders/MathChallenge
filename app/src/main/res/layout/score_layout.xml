@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:fancy="http://schemas.android.com/apk/res-auto">
 
     <TextView
         android:layout_width="match_parent"
@@ -11,13 +12,23 @@
         android:id="@+id/scoreView"
         android:textSize="35sp"/>
 
-    <Button
+    <View
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="15dp"
-        android:paddingTop="80dp"
+        android:layout_height="100dp"/>
+
+    <mehdi.sakout.fancybuttons.FancyButton
         android:id="@+id/playAgain"
-        android:gravity="center"
+        android:gravity="center_horizontal"
         android:layout_gravity="center_horizontal"
-        android:text="Play Again.."/>
-</LinearLayout>
+
+        fancy:fb_textSize="20sp"
+        fancy:fb_radius="10dp"
+        fancy:fb_text="PLAY AGAIN"
+        fancy:fb_borderColor="#FFFFFF"
+        fancy:fb_borderWidth="1dp"
+        fancy:fb_defaultColor="#3b5998"
+        fancy:fb_focusColor="#5474b8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+   </LinearLayout>

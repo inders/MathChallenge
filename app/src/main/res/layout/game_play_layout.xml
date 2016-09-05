@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/game_layout"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
+        android:layout_width="match_parent"
+        android:id="@+id/progressBar"
+        android:paddingTop="5dp"
+        android:layout_height="35dp"
+        android:paddingRight="10dp"
+        app:rcProgress="100.0"
+        app:rcSecondaryProgress="100.0"
+        app:rcMax="100.00"
+        app:rcRadius="5dp"
+        app:rcBackgroundPadding="4dp"
+        app:rcReverse="true"
+        app:rcProgressColor="#5474b8"
+        app:rcSecondaryProgressColor="#3b5998"
+        app:rcBackgroundColor="#5474b8" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingTop="50dp"
+        android:textSize="40sp"
+        android:id="@+id/problemView"/>
+
+    <GridView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/answersView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:columnWidth="90dp"
+        android:paddingTop="100dp"
+        android:paddingLeft="50dp"
+        android:numColumns="auto_fit"
+        android:verticalSpacing="10dp"
+        android:horizontalSpacing="10dp"
+        android:stretchMode="columnWidth"
+        android:gravity="center"
+        />
+
+
+</LinearLayout>
