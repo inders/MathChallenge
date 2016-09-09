@@ -5,27 +5,41 @@
     android:id="@+id/game_layout"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center_horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Time Left :"
+            android:textColor="#3b5998"
+            android:textSize="50dp"
+            android:textStyle="bold"
+            android:layout_gravity="center_horizontal"
+            />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
         android:id="@+id/progressBar"
-        android:paddingTop="5dp"
-        android:layout_height="35dp"
-        android:paddingRight="10dp"
-        app:rcProgress="100.0"
-        app:rcSecondaryProgress="100.0"
-        app:rcMax="100.00"
-        app:rcRadius="5dp"
-        app:rcBackgroundPadding="4dp"
-        app:rcReverse="true"
-        app:rcProgressColor="#5474b8"
-        app:rcSecondaryProgressColor="#3b5998"
-        app:rcBackgroundColor="#5474b8" />
+        android:textColor="#3b5998"
+        android:textSize="50dp"
+        android:textStyle="bold"
+        android:layout_gravity="center_horizontal"
+        />
+    </LinearLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="2dp"
+        android:background="#5474b8"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:paddingTop="50dp"
+        android:layout_margin="20dp"
         android:textSize="40sp"
         android:id="@+id/problemView"/>
 
@@ -34,7 +48,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:columnWidth="90dp"
-        android:paddingTop="100dp"
+        android:layout_margin="20dp"
         android:paddingLeft="50dp"
         android:numColumns="auto_fit"
         android:verticalSpacing="10dp"

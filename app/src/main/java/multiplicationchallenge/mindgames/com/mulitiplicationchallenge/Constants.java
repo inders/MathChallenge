@@ -13,4 +13,6 @@ public class Constants {
     public static final String MYSCORE = "SCORE";
     public static final String PROFILE = "PROFILE";
     public static final String MODE = "MODE";
+    public static final String PROGRESS = "PROGRESS";
+    public static final String PROBLEMS_ATTEMPTED = "PROBLEMS_ATTEMPTED";
 }

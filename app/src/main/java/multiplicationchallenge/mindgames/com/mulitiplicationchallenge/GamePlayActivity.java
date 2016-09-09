@@ -29,6 +29,8 @@ public class GamePlayActivity extends Activity {
     private Context context;
     private Integer gameCount;
     private Integer score;
+    private int progress;
+    private int problemsAttempted;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,23 +42,25 @@ public class GamePlayActivity extends Activity {
         score = intent.getExtras().getInt(Constants.SCORE);
         this.context = this;
         final String mode = intent.getExtras().getString(Constants.MODE);
+        progress = intent.getExtras().getInt(Constants.PROGRESS);
+        problemsAttempted = intent.getExtras().getInt(Constants.PROBLEMS_ATTEMPTED);
 
-        RoundCornerProgressBar progressBar = (RoundCornerProgressBar) findViewById(R.id.progressBar);
+        TextView progressBar = (TextView) findViewById(R.id.progressBar);
 
-        if (gameCount < Constants.TOTAL_GAME_PLAY_COUNT) {
             if (mode.equalsIgnoreCase(Constants.CHALLENGE)) {
-                MyCountDownTimer myCountDownTimer = new MyCountDownTimer(10000, 500, progressBar, mode);
+                MyCountDownTimer myCountDownTimer = null;
+                if (progress == 0) {
+                     myCountDownTimer = new MyCountDownTimer(60000, 1000, progressBar);
+                } else {
+                    int progressInMsec = progress * 1000;
+                    myCountDownTimer = new MyCountDownTimer(progressInMsec, 1000, progressBar);
+                }
                 myCountDownTimer.start();
                 runGame(myCountDownTimer, mode);
             } else if (mode.equalsIgnoreCase(Constants.PRACTICE)){
                 progressBar.setVisibility(View.GONE);
                 runGame(null, mode);
             }
-        } else {
-            Intent intent1 = new Intent(context, DisplayScoreActivity.class);
-            intent1.putExtra(Constants.SCORE, score);
-            startActivity(intent1);
-        }
     }
 
     private void runGame(final MyCountDownTimer timer, final String mode) {
@@ -86,6 +90,7 @@ public class GamePlayActivity extends Activity {
                     Toast.makeText(GamePlayActivity.this, "You got it wrong",
                             Toast.LENGTH_SHORT).show();
                 }
+                problemsAttempted += 1;
                 if (timer != null) {
                     timer.cancel();
                 }
@@ -94,6 +99,8 @@ public class GamePlayActivity extends Activity {
                 intent.putExtra(Constants.SCORE, score);
                 intent.putExtra(Constants.TABLE_NUM, tableNum);
                 intent.putExtra(Constants.MODE, mode);
+                intent.putExtra(Constants.PROGRESS, progress);
+                intent.putExtra(Constants.PROBLEMS_ATTEMPTED, problemsAttempted);
                 startActivity(intent);
             }
         });
@@ -104,32 +111,30 @@ public class GamePlayActivity extends Activity {
     }
 
     private class MyCountDownTimer extends CountDownTimer {
-        private RoundCornerProgressBar progressBar;
-        private final String mode;
+        private TextView progressBar;
 
         public MyCountDownTimer(long millisInFuture, long countDownInterval,
-                                RoundCornerProgressBar progressBar, final String mode) {
+                                TextView progressBar) {
             super(millisInFuture, countDownInterval);
             this.progressBar = progressBar;
-            this.mode = mode;
         }
 
         @Override
         public void onTick(long millisUntilFinished) {
-            int progress = (int) (millisUntilFinished/100);
-            progressBar.setProgress(progress);
+            progress = (int) (millisUntilFinished/1000);
+            progressBar.setText(new Integer(progress).toString());
         }
 
         @Override
         public void onFinish() {
-            progressBar.setProgress(0);
-            this.cancel();
-            Intent intent = new Intent(context, GamePlayActivity.class);
-            intent.putExtra(Constants.GAMECOUNT, gameCount + 1);
-            intent.putExtra(Constants.SCORE, score);
-            intent.putExtra(Constants.TABLE_NUM, tableNum);
-            intent.putExtra(Constants.MODE, mode);
-            startActivity(intent);
+            if (progress == 1) {
+                progressBar.setText("0");
+                this.cancel();
+                Intent intent1 = new Intent(context, DisplayScoreActivity.class);
+                intent1.putExtra(Constants.SCORE, score);
+                intent1.putExtra(Constants.PROBLEMS_ATTEMPTED, problemsAttempted);
+                startActivity(intent1);
+            }
         }
 
     }

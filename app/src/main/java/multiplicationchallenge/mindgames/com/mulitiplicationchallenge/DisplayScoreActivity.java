@@ -23,7 +23,8 @@ public class DisplayScoreActivity extends Activity {
         TextView textView = (TextView) findViewById(R.id.scoreView);
         Intent intent = getIntent();
         int score = intent.getExtras().getInt(Constants.SCORE);
-        textView.setText("Your final score is = " + score + "/" + Constants.TOTAL_GAME_PLAY_COUNT);
+        int problemsAttempted = intent.getExtras().getInt(Constants.PROBLEMS_ATTEMPTED);
+        textView.setText("Your final score is = " + score + "/" + problemsAttempted);
 
         FancyButton button = (FancyButton) findViewById(R.id.playAgain);
         button.setOnClickListener(new View.OnClickListener() {
