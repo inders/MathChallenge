@@ -35,6 +35,9 @@ public class MainActivity extends AppCompatActivity {
                     Intent intent = new Intent(context, GameStartActivity.class);
                     intent.putExtra(Constants.MODE, Constants.CHALLENGE);
                     startActivity(intent);
+                } else if (optionSelected.equalsIgnoreCase(Constants.MYSCORE)) {
+                    Intent intent = new Intent(context, AllScoresActivity.class);
+                    startActivity(intent);
                 }
             }
         });

@@ -31,6 +31,7 @@ public class GamePlayActivity extends Activity {
     private Integer score;
     private int progress;
     private int problemsAttempted;
+    private LinearLayout progressLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +45,7 @@ public class GamePlayActivity extends Activity {
         final String mode = intent.getExtras().getString(Constants.MODE);
         progress = intent.getExtras().getInt(Constants.PROGRESS);
         problemsAttempted = intent.getExtras().getInt(Constants.PROBLEMS_ATTEMPTED);
+        progressLayout = (LinearLayout) findViewById(R.id.progressLayout);
 
         TextView progressBar = (TextView) findViewById(R.id.progressBar);
 
@@ -58,8 +60,18 @@ public class GamePlayActivity extends Activity {
                 myCountDownTimer.start();
                 runGame(myCountDownTimer, mode);
             } else if (mode.equalsIgnoreCase(Constants.PRACTICE)){
-                progressBar.setVisibility(View.GONE);
-                runGame(null, mode);
+                if (gameCount < Constants.TOTAL_GAME_PLAY_COUNT) {
+                    progressLayout.setVisibility(View.GONE);
+                    runGame(null, mode);
+                } else {
+                    Intent intent1 = new Intent(context, DisplayScoreActivity.class);
+                    intent1.putExtra(Constants.GAMECOUNT, gameCount+1);
+                    intent1.putExtra(Constants.SCORE, score);
+                    intent1.putExtra(Constants.TABLE_NUM, tableNum);
+                    intent1.putExtra(Constants.MODE, mode);
+                    intent1.putExtra(Constants.PROBLEMS_ATTEMPTED, problemsAttempted);
+                    startActivity(intent1);
+                }
             }
     }
 
@@ -133,6 +145,8 @@ public class GamePlayActivity extends Activity {
                 Intent intent1 = new Intent(context, DisplayScoreActivity.class);
                 intent1.putExtra(Constants.SCORE, score);
                 intent1.putExtra(Constants.PROBLEMS_ATTEMPTED, problemsAttempted);
+                intent1.putExtra(Constants.TABLE_NUM, tableNum);
+                intent1.putExtra(Constants.GAMECOUNT, gameCount);
                 startActivity(intent1);
             }
         }
