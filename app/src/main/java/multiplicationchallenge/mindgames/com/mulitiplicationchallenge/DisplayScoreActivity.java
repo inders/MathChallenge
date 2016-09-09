@@ -51,7 +51,7 @@ public class DisplayScoreActivity extends Activity {
             Toast.makeText(this, "Congrats! New Record Score", Toast.LENGTH_SHORT).show();
             SharedPreferences.Editor editor = pref.edit();
             editor.putInt(tableNum, score);
-            editor.commit();
+            editor.apply();
         } else {
             Toast.makeText(this, "You can do better, Try Again.", Toast.LENGTH_SHORT).show();
         }

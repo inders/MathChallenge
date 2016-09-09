@@ -19,6 +19,7 @@
         <activity android:name=".DisplayScoreActivity"/>
         <activity android:name=".GameStartActivity"/>
         <activity android:name=".AllScoresActivity"/>
+        <activity android:name=".ProfileActivity"/>
 
     </application>
 

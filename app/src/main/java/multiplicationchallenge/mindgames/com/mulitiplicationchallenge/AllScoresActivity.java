@@ -20,7 +20,7 @@ import java.util.List;
 /**
  * Created by indersingh on 9/9/16.
  */
-public class AllScoresActivity extends AppCompatActivity {
+public class AllScoresActivity extends Activity {
 
     private List<String> tableNumList = new ArrayList<>();
 
@@ -47,7 +47,7 @@ public class AllScoresActivity extends AppCompatActivity {
 
         TextView userName = (TextView) findViewById(R.id.user_name);
         if (profileName != null) {
-            userName.setText(userName + "'s Best Scores");
+            userName.setText(profileName + "'s Best Scores");
         } else {
             userName.setText("Best Scores");
         }

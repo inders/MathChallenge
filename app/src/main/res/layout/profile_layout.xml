@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:fancy="http://schemas.android.com/apk/res-auto">
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Enter your name"
+        android:id="@+id/nameEditText"
+        android:textColor="#5474b8"
+        android:textSize="20dp"
+        android:layout_marginTop="150dp"
+        android:layout_gravity="center_horizontal"
+        />
+
+    <mehdi.sakout.fancybuttons.FancyButton
+        android:id="@+id/saveUserName"
+        android:gravity="center_horizontal"
+        android:layout_gravity="center_horizontal"
+
+        fancy:fb_textSize="20sp"
+        fancy:fb_radius="10dp"
+        fancy:fb_text="SAVE"
+        fancy:fb_borderColor="#FFFFFF"
+        fancy:fb_borderWidth="1dp"
+        fancy:fb_defaultColor="#3b5998"
+        fancy:fb_focusColor="#5474b8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+
+</LinearLayout>

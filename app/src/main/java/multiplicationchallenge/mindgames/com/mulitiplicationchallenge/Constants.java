@@ -17,6 +17,7 @@ public class Constants {
     public static final String PROBLEMS_ATTEMPTED = "PROBLEMS_ATTEMPTED";
     public static final String SHARED_PREF = "MindGamesSharedPref";
     public static final String PROFILE_NAME = "ProfileName";
+    public static final String USER_NAME = "UserName";
 
     public static final String TABLE_SCORE_2 = "2";
     public static final String TABLE_SCORE_3 = "3";
